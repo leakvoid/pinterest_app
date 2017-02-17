@@ -4,22 +4,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
-/*
-var voteSchema = new Schema({
-    ip_address: String,
-    vote_owner: [{ type: ObjectId, ref: 'User'}]
+var pinSchema = new Schema({
+    image_url: String,
+    title: String
 });
-
-var choiceSchema = new Schema({
-    name: String,
-    votes: [voteSchema]
-});
-
-var pollSchema = new Schema({
-    name: String,
-    choices: [choiceSchema]
-});
-*/
 
 var userSchema = new Schema({
     github: {
@@ -27,7 +15,8 @@ var userSchema = new Schema({
         displayName: String,
         username: String,
         publicRepos: Number
-    }
+    },
+    pins: [pinSchema]
 });
 
 module.exports = mongoose.model('User', userSchema);

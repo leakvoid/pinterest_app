@@ -1,0 +1,16 @@
+
+.grid-item {
+    float: left;
+    background: #F0F8FF;
+    border: 2px solid #333;
+    border: 2px solid hsla(0, 0%, 0%, 0.5);
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px 5px 5px 5px;
+}
+
+img {
+    margin: 10px 10px 10px 10px;
+    max-width: 200px;
+    max-height: 200px;
+}

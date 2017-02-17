@@ -11,6 +11,20 @@ module.exports = function(app, passport) {
     app.route('/')
         .get(main_controller.home);
 
+    app.route('/pins')
+        .get(main_controller.get_all_pins);
+
+    app.route('/users/:user_id/pins')
+        .get(main_controller.get_user_pins);
+
+    app.route('/pins')
+        .post(main_controller.create_pin);
+
+    app.route('/pins/:pin_id/delete')
+        .post(main_controller.destroy_pin);
+
+    /* utility */
+
     app.route('/logout')
         .get(function(req, res) {
             req.logout();

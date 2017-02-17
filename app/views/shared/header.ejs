@@ -1,6 +1,21 @@
 <html>
   <head>
-    <title>Home Page</title>
+    <title><%= title %></title>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="/main/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <% include auth %>
+    <table>
+      <tr>
+        <td>
+          <a href="/pins">ALL PINS</a>
+        </td>
+        <% if(auth_status) { %>
+        <td>
+          <a href="/users/<%= auth_data._id %>/pins">MY PINS</a>
+        </td>
+        <% } %>
+        <% include auth %>
+      </tr>
+    </table>

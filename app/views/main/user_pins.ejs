@@ -1,0 +1,40 @@
+
+<% include ../shared/header %>
+
+<% if(owner_status) { %>
+  <h1>My Pinterest Images</h1>
+
+  <form action="/pins" accept-charset="UTF-8" method="post">
+    <input type="text" placeholder="Enter pin title" name="title">
+    <input type="text" placeholder="Enter image URL" name="image_url" accept=".png, .jpg"> 
+    <input type="submit" value="Add pin" name="create_action">
+  </form>
+<% } else { %>
+  <h1>User Pinterest Images</h1>
+<% } %>
+
+<div class="grid">
+  <% pins.forEach( function(p) { %>
+
+    <div class="grid-item">
+      <img src="<%= p.image_url %>" onError="this.onerror=null;this.src='/images/no_image.png';" />
+      <table>
+        <tr>
+          <th>Title:</th>
+          <td><%= p.title %></td>
+        </tr>
+        <% if(owner_status) { %>
+          <td colspan="2">
+            <form action="/pins/<%= p._id %>/delete" accept-charset="UTF-8" method="post">
+              <input type="submit" value="Delete Image" name="delete_action">
+            </form>
+          </td>
+        <% } %>
+      </table>
+    </div>
+
+  <% }); %>
+</div>
+
+<% include ../shared/footer %>
+

@@ -1,0 +1,29 @@
+
+<% include ../shared/header %>
+
+<h1>All Pinterest Images</h1>
+
+<div class="grid">
+  <% all_users.forEach( function(u) { %>
+    <% u.pins.forEach( function(p) { %>
+
+      <div class="grid-item">
+        <img src="<%= p.image_url %>" onError="this.onerror=null;this.src='/images/no_image.png';" />
+        <table>
+          <tr>
+            <th>Title:</th>
+            <td><%= p.title %></td>
+          </tr>
+          <tr>
+            <th>User:</th>
+            <td><a href="/users/<%= u._id %>/pins"><%= u.github.username %></a></td>
+          </tr>
+        </table>
+      </div>
+
+    <% }); %>
+  <% }); %>
+</div>
+
+<% include ../shared/footer %>
+
